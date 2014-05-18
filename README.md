@@ -1,6 +1,7 @@
 # gobloom
 
 Bloom Filter and Counting Bloom Filter implement in Go,
+
 inspired by willf's implementation of Bloom Filter, see https://github.com/willf/bloom
 
 
@@ -17,7 +18,7 @@ import (
 )
 
 func main() {
-	bf := NewBloomFilter(1<<24, 3)
+	bf := gobloom.NewBloomFilter(1<<24, 3)
 	bf.Add([]byte("hello gobloom"))
 	if bf.Contains([]byte("hello gobloom")) {
 		fmt.Println("\"hello gobloom\" is in bf")
@@ -36,7 +37,7 @@ import (
 )
 
 func main() {
-	bf := NewCountingBloomFilter(1<<24, 3)
+	bf := gobloom.NewCountingBloomFilter(1<<24, 3)
 	bf.Add([]byte("hello gobloom"))
 	if bf.Contains([]byte("hello gobloom")) {
 		fmt.Println("\"hello gobloom\" is in bf")
@@ -51,6 +52,7 @@ func main() {
 ## Resources
 
 Bloom Filter: http://en.wikipedia.org/wiki/Bloom_filter#Counting_filters
+
 FNV Hash Function: http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
 
 ## License
