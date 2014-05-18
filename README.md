@@ -6,8 +6,6 @@ inspired by willf's implementation of Bloom Filter, see https://github.com/willf
 
 ## Getting Started
 
--------
-
 #### Bool Bloom Filter
 
 ~~~ go
@@ -52,12 +50,9 @@ func main() {
 
 ## Resources
 
--------
-
 Bloom Filter: http://en.wikipedia.org/wiki/Bloom_filter#Counting_filters
 FNV Hash Function: http://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function
 
 ## License
--------
 
 gobloom is released under the BSD License. See LICENSE for more information.

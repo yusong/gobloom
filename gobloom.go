@@ -77,7 +77,7 @@ func (bf *BloomFilter) Contains(b []byte) bool {
 	ret := true
 	high32, low32 := bf.hash(b)
 	for i := uint(0); i < bf.k; i++ {
-		index := (high32 + i*low32) % bf.length
+		index := (high32*i + low32) % bf.length
 		ret = ret && bf.bitset.Has(index)
 	}
 	return ret
@@ -125,7 +125,7 @@ func (bf *CountingBloomFilter) hash(b []byte) (uint, uint) {
 func (bf *CountingBloomFilter) Add(b []byte) {
 	high32, low32 := bf.hash(b)
 	for i := uint(0); i < bf.k; i++ {
-		index := (high32 + i*low32) % bf.length
+		index := (high32*i + low32) % bf.length
 		bf.buckets.Add(index)
 	}
 	bf.n++
@@ -136,7 +136,7 @@ func (bf *CountingBloomFilter) Contains(b []byte) bool {
 	ret := true
 	high32, low32 := bf.hash(b)
 	for i := uint(0); i < bf.k; i++ {
-		index := (high32 + i*low32) % bf.length
+		index := (high32*i + low32) % bf.length
 		ret = ret && bf.buckets.Has(index)
 	}
 	return ret
@@ -146,7 +146,7 @@ func (bf *CountingBloomFilter) Contains(b []byte) bool {
 func (bf *CountingBloomFilter) Remove(b []byte) {
 	high32, low32 := bf.hash(b)
 	for i := uint(0); i < bf.k; i++ {
-		index := (high32 + i*low32) % bf.length
+		index := (high32*i + low32) % bf.length
 		bf.buckets.Sub(index)
 	}
 	bf.n--
